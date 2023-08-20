@@ -2,11 +2,12 @@ import Image from "next/image";
 import SideBar from "../components/ui/SideBar";
 import DashboardCard from "../components/ui/DashboardCard";
 import LineChart from "../components/ui/LineChart";
+import PiChart from "../components/ui/PiChart";
 function Dashboard() {
   return (
     <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col items-center md:items-start px-8 py-4 ">
       <SideBar />
-      <main className="w-4/5 md:ml-10 flex flex-col  md:gap-8 gap-6 my-2">
+      <main className="w-4/5 md:ml-10 flex flex-col   gap-6 my-2">
         <div className=" flex flex-col md:flex-row gap-3  md:gap-0 justify-between items-center">
           <h1 className="md:text-xl text-2xl font-bold">Dashboard</h1>
           <div className="flex  md:w-1/3 w-full justify-between">
@@ -79,9 +80,56 @@ function Dashboard() {
             <LineChart />
           </div>
         </div>
-        <div className="border-2 flex md:flex-row justify-around">
-          <div className="h-40 w-1/2 border-2">pi chart</div>
-          <div className="h-40 w-1/2 border-2">meeting link</div>
+        <div className=" flex md:flex-row justify-around">
+          <div className="h-52 w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
+            <div className="flex justify-between">
+              <h1 className="font-bold">Top Salaries</h1>
+              <div className="text-xs text-[#858585]">Jan-July 2023</div>
+            </div>
+            <div className="flex justify-around h-4/6">
+              <div className="w-1/2">
+                <PiChart />
+              </div>
+              <ul className="w-1/2 flex flex-col justify-around">
+                <li className="font-bold text-sm   pl-3 relative">
+                  <div className="w-2 h-2 rounded-full bg-[#98D89E] absolute left-0 top-[5px]"></div>
+                  $200,000-250,000 <p className="text-xs text-[#858585]">%</p>
+                </li>
+                <li className="font-bold text-sm  pl-3 relative">
+                  <div className="w-2 h-2 rounded-full bg-[#F6DC7D] absolute left-0 top-[5px]"></div>
+                  $300,000-350,000 <p className="text-xs text-[#858585]">%</p>
+                </li>
+                <li className="font-bold text-sm  pl-3 relative">
+                  <div className="w-2 h-2 rounded-full bg-[#EE8484] absolute left-0 top-[5px]"></div>
+                  $400,000-550,000 <p className="text-xs text-[#858585]">%</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="h-52 w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
+            <div className="flex justify-between">
+              <h1 className="font-bold">Today's Schedule</h1>
+              <div className="text-[#858585] cursor-pointer">See All </div>
+            </div>
+            <div className="flex flex-col items-start gap-3 h-4/6">
+              <div className="text-sm border-l-4 border-[#9BDD7C] pl-2">
+                <p className="text-[#666666] font-semibold ">
+                  Meeting with suppliers from Kuta Bali
+                </p>
+                <p className="text-[#999999] text-xs">14.00-15.00</p>
+                <p className="text-[#999999] text-xs">
+                  at Sunset Road, Kuta, Bali{" "}
+                </p>
+              </div>
+              <div className="text-sm border-l-4 border-[#6972C3] pl-2">
+                <p className="text-[#666666] font-semibold ">
+                  Check operation at Giga Factory 1
+                </p>
+                <p className="text-[#999999] text-xs">18.00-20.00</p>
+                <p className="text-[#999999] text-xs">at Central Jakarta </p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
