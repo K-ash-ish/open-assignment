@@ -10,7 +10,7 @@ function SideBar() {
 
   return (
     <nav
-      className={`md:w-[220px] md:h-full ${
+      className={`md:w-[220px] md:min-h-screen ${
         sidebar ? "h-[400px]" : "h-20"
       } w-4/5  rounded-xl capitalize bg-black text-white flex flex-col justify-around items-center px-8 transition-all ease-in duration-500`}
     >

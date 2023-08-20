@@ -13,7 +13,7 @@ async function Dashboard() {
   const { totalEmployees, totalSalary, highestSalary, averageAge } =
     calculateEmployeeStats(data);
   return (
-    <div className="bg-[#f5f5f5] min-h-screen flex md:flex-row flex-col items-center md:items-start px-8 py-4 ">
+    <div className="bg-[#f5f5f5] min-h-screen flex md:flex-row flex-col items-center md:items-start md:px-8 px-0 py-4 ">
       <SideBar />
       <main className="w-4/5 md:ml-10 flex flex-col   gap-6 my-2">
         <div className=" flex flex-col md:flex-row gap-3  md:gap-0 justify-between items-center">
@@ -89,37 +89,41 @@ async function Dashboard() {
           </div>
         </div>
         <div className=" flex md:flex-row flex-col gap-4 md:gap-0 justify-around">
-          <div className="h-52 md:w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
+          <div className="h-52 md:w-2/5 md:px-8 px-4 b flex flex-col justify-around bg-white rounded-xl">
             <div className="flex justify-between">
-              <h1 className="font-bold">Top Salaries</h1>
+              <h1 className="font-bold md:text-base text-sm">Top Salaries</h1>
               <div className="text-xs text-[#858585]">Jan-July 2023</div>
             </div>
-            <div className="flex justify-around h-4/6">
+            <div className="flex  justify-around md:h-4/6 h-5/6">
               <div className="w-1/2">
                 <PiChart data={data} />
               </div>
               <ul className="w-1/2 flex flex-col justify-around">
-                <li className="font-bold text-sm   pl-3 relative">
+                <li className="font-bold md:text-sm text-xs   pl-3 relative">
                   <div className="w-2 h-2 rounded-full bg-[#98D89E] absolute left-0 top-[5px]"></div>
                   $200,000-250,000 <p className="text-xs text-[#858585]">%</p>
                 </li>
-                <li className="font-bold text-sm  pl-3 relative">
+                <li className="font-bold md:text-sm text-xs   pl-3 relative">
                   <div className="w-2 h-2 rounded-full bg-[#F6DC7D] absolute left-0 top-[5px]"></div>
                   $300,000-350,000 <p className="text-xs text-[#858585]">%</p>
                 </li>
-                <li className="font-bold text-sm  pl-3 relative">
+                <li className="font-bold md:text-sm text-xs   pl-3 relative">
                   <div className="w-2 h-2 rounded-full bg-[#EE8484] absolute left-0 top-[5px]"></div>
                   $400,000-550,000 <p className="text-xs text-[#858585]">%</p>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="h-52 md:w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
+          <div className="h-52 md:w-2/5 md:px-8 px-4 flex flex-col justify-around bg-white rounded-xl">
             <div className="flex justify-between">
-              <h1 className="font-bold">Today's Schedule</h1>
-              <div className="text-[#858585] cursor-pointer">See All </div>
+              <h1 className="font-bold md:text-base text-sm">
+                Today's Schedule
+              </h1>
+              <div className="text-[#858585] cursor-pointer md:text-base text-sm">
+                See All{" "}
+              </div>
             </div>
-            <div className="flex flex-col items-start gap-3 h-4/6">
+            <div className="flex flex-col items-start md:gap-3 gap-2 md:h-4/6 h-5/6">
               <div className="text-sm border-l-4 border-[#9BDD7C] pl-2">
                 <p className="text-[#666666] font-semibold ">
                   Meeting with suppliers from Kuta Bali
