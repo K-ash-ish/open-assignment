@@ -8,13 +8,13 @@ import { Line, Pie } from "react-chartjs-2";
 
 Chart.register(CategoryScale);
 
-function LineChart() {
+function LineChart({ data }) {
   const [chartData, setChartData] = useState({
-    labels: dummyData.map((data) => data.employee_age),
+    labels: data?.map((data) => data.employee_age),
     datasets: [
       {
         label: "Employer's Salary ",
-        data: dummyData.map((data) => data.employee_salary),
+        data: data?.map((data) => data.employee_salary),
         borderColor: "#E9A0A0",
         borderWidth: 2,
         cubicInterpolationMode: "monotone",
@@ -22,7 +22,16 @@ function LineChart() {
       },
       {
         label: "Employer's Salary ",
-        data: ["250000", "400000", "300000", "220000"],
+        data: [
+          "250000",
+          "400000",
+          "300000",
+          "220000",
+          "250000",
+          "400000",
+          "300000",
+          "220000",
+        ],
         borderColor: "#9BDD7C",
         borderWidth: 2,
         cubicInterpolationMode: "monotone",

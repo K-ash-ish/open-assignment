@@ -7,13 +7,13 @@ import { Pie } from "react-chartjs-2";
 
 Chart.register(CategoryScale);
 
-function PiChart() {
+function PiChart({ data }) {
   const [chartData, setChartData] = useState({
-    labels: dummyData.map((data) => data.employee_age),
+    labels: data?.map((data) => data.employee_age),
     datasets: [
       {
         label: "Employer's Salary ",
-        data: dummyData.map((data) => data.employee_salary),
+        data: data?.map((data) => data.employee_salary),
       },
     ],
   });

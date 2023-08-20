@@ -3,9 +3,17 @@ import SideBar from "../components/ui/SideBar";
 import DashboardCard from "../components/ui/DashboardCard";
 import LineChart from "../components/ui/LineChart";
 import PiChart from "../components/ui/PiChart";
-function Dashboard() {
+import { useEmployeeData } from "../hooks/useEmployeeData";
+import { calculateEmployeeStats } from "../helper";
+
+async function Dashboard() {
+  const res = await useEmployeeData();
+  const data = await res?.data?.sort((a, b) => a.employee_age - b.employee_age);
+
+  const { totalEmployees, totalSalary, highestSalary, averageAge } =
+    calculateEmployeeStats(data);
   return (
-    <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col items-center md:items-start px-8 py-4 ">
+    <div className="bg-[#f5f5f5] min-h-screen flex md:flex-row flex-col items-center md:items-start px-8 py-4 ">
       <SideBar />
       <main className="w-4/5 md:ml-10 flex flex-col   gap-6 my-2">
         <div className=" flex flex-col md:flex-row gap-3  md:gap-0 justify-between items-center">
@@ -45,26 +53,26 @@ function Dashboard() {
         <div className="flex flex-wrap  justify-between md:gap-y-3 gap-3">
           <DashboardCard
             icon={"/total-revenue.svg"}
-            cardName={"total revenues"}
-            data="$2,129,430"
+            cardName={"total salary"}
+            data={totalSalary}
             classname="bg-[#DDEFE0]"
           />
           <DashboardCard
             icon={"/total-transaction.svg"}
-            cardName={"total transactions"}
-            data="$1,520"
+            cardName={"highest salary"}
+            data={highestSalary}
             classname="bg-[#F4ECDD]"
           />
           <DashboardCard
             icon={"/like.svg"}
-            cardName={"total likes"}
-            data="$9,721"
+            cardName={"average age "}
+            data={averageAge}
             classname="bg-[#EFDADA]"
           />
           <DashboardCard
             icon={"/multi-user.svg"}
-            cardName={"total users"}
-            data="$892"
+            cardName={"total employees"}
+            data={totalEmployees}
             classname="bg-[#DEE0EF]"
           />
         </div>
@@ -77,18 +85,18 @@ function Dashboard() {
             </p>
           </div>
           <div className="h-5/6 w-[100%] flex justify-center">
-            <LineChart />
+            <LineChart data={data} />
           </div>
         </div>
-        <div className=" flex md:flex-row justify-around">
-          <div className="h-52 w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
+        <div className=" flex md:flex-row flex-col gap-4 md:gap-0 justify-around">
+          <div className="h-52 md:w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
             <div className="flex justify-between">
               <h1 className="font-bold">Top Salaries</h1>
               <div className="text-xs text-[#858585]">Jan-July 2023</div>
             </div>
             <div className="flex justify-around h-4/6">
               <div className="w-1/2">
-                <PiChart />
+                <PiChart data={data} />
               </div>
               <ul className="w-1/2 flex flex-col justify-around">
                 <li className="font-bold text-sm   pl-3 relative">
@@ -106,7 +114,7 @@ function Dashboard() {
               </ul>
             </div>
           </div>
-          <div className="h-52 w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
+          <div className="h-52 md:w-2/5 px-8 b flex flex-col justify-around bg-white rounded-xl">
             <div className="flex justify-between">
               <h1 className="font-bold">Today's Schedule</h1>
               <div className="text-[#858585] cursor-pointer">See All </div>
