@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SideBar from "../components/ui/SideBar";
 import DashboardCard from "../components/ui/DashboardCard";
-
+import LineChart from "../components/ui/LineChart";
 function Dashboard() {
   return (
     <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col items-center md:items-start p-8 ">
@@ -67,7 +67,18 @@ function Dashboard() {
             classname="bg-[#DEE0EF]"
           />
         </div>
-        <div className="w-full border-2 h-80">chartjs</div>
+        <div className="w-full  md:h-[350px] flex flex-col gap-3 p-6 bg-white rounded-xl">
+          <div className="flex flex-row justify-between">
+            <h1 className="font-bold text-sm">Employee Salary</h1>
+            <p className="text-xs relative border-2 w-12 text-right">
+              <span className="absolute h-2 w-2 left-0 top-1/2 transform -translate-y-1/2 bg-[#E9A0A0] rounded-full"></span>
+              Salary
+            </p>
+          </div>
+          <div className="h-5/6 w-[100%] flex justify-center">
+            <LineChart />
+          </div>
+        </div>
         <div>
           <div className="h-40 w-40 border-2">pi chart</div>
           <div className="h-40 w-40 border-2">meeting link</div>
