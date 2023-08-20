@@ -4,7 +4,7 @@ import React from "react";
 function DashboardCard({ icon, cardName, data, classname }) {
   return (
     <div
-      className={`${classname} md:w-40 w-28 h-20 rounded-xl flex flex-col justify-center px-4`}
+      className={`${classname} md:w-44 w-28 h-20 rounded-xl flex flex-col justify-center px-4`}
     >
       <Image
         alt={icon}

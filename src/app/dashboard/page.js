@@ -4,12 +4,12 @@ import DashboardCard from "../components/ui/DashboardCard";
 import LineChart from "../components/ui/LineChart";
 function Dashboard() {
   return (
-    <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col items-center md:items-start p-8 ">
+    <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col items-center md:items-start px-8 py-4 ">
       <SideBar />
       <main className="w-4/5 md:ml-10 flex flex-col  md:gap-8 gap-6 my-2">
         <div className=" flex flex-col md:flex-row gap-3  md:gap-0 justify-between items-center">
           <h1 className="md:text-xl text-2xl font-bold">Dashboard</h1>
-          <div className="flex  md:w-1/3 w-full justify-around">
+          <div className="flex  md:w-1/3 w-full justify-between">
             <div className="relative">
               <input
                 type="text"
@@ -41,7 +41,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="flex flex-wrap  justify-around md:gap-y-3 gap-3">
+        <div className="flex flex-wrap  justify-between md:gap-y-3 gap-3">
           <DashboardCard
             icon={"/total-revenue.svg"}
             cardName={"total revenues"}
@@ -67,10 +67,10 @@ function Dashboard() {
             classname="bg-[#DEE0EF]"
           />
         </div>
-        <div className="w-full  md:h-[350px] flex flex-col gap-3 p-6 bg-white rounded-xl">
+        <div className="w-full  md:h-[300px] flex flex-col justify-around gap-3 p-6 bg-white rounded-xl">
           <div className="flex flex-row justify-between">
             <h1 className="font-bold text-sm">Employee Salary</h1>
-            <p className="text-xs relative border-2 w-12 text-right">
+            <p className="text-xs relative  w-14 text-right">
               <span className="absolute h-2 w-2 left-0 top-1/2 transform -translate-y-1/2 bg-[#E9A0A0] rounded-full"></span>
               Salary
             </p>
@@ -79,9 +79,9 @@ function Dashboard() {
             <LineChart />
           </div>
         </div>
-        <div>
-          <div className="h-40 w-40 border-2">pi chart</div>
-          <div className="h-40 w-40 border-2">meeting link</div>
+        <div className="border-2 flex md:flex-row justify-around">
+          <div className="h-40 w-1/2 border-2">pi chart</div>
+          <div className="h-40 w-1/2 border-2">meeting link</div>
         </div>
       </main>
     </div>
