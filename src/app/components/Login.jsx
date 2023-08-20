@@ -17,7 +17,8 @@ function Login() {
             <button className=" bg-white text-[#858585] text-xs px-2 py-1 rounded-lg flex justify-around items-center">
               <Image
                 src={"/google.png"}
-                className="mr-2"
+                alt="google-log"
+                className="mr-2 w-auto h-auto"
                 width={10}
                 height={10}
               />

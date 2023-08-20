@@ -12,7 +12,7 @@ function NavItem({ icon, name, active }) {
         height={15}
         width={15}
         src={icon}
-        className="text-white"
+        className="text-white w-auto h-auto"
       />{" "}
       {name}
     </Link>

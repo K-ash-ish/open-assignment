@@ -4,11 +4,11 @@ import DashboardCard from "../components/ui/DashboardCard";
 
 function Dashboard() {
   return (
-    <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col p-8 ">
+    <div className="bg-[#f5f5f5] h-screen flex md:flex-row flex-col items-center md:items-start p-8 ">
       <SideBar />
-      <main className="w-4/5 md:ml-10 flex flex-col  md:gap-8 gap-6">
+      <main className="w-4/5 md:ml-10 flex flex-col  md:gap-8 gap-6 my-2">
         <div className=" flex flex-col md:flex-row gap-3  md:gap-0 justify-between items-center">
-          <h1 className="md:text-xl font-bold">Dashboard</h1>
+          <h1 className="md:text-xl text-2xl font-bold">Dashboard</h1>
           <div className="flex  md:w-1/3 w-full justify-around">
             <div className="relative">
               <input
@@ -18,27 +18,30 @@ function Dashboard() {
               />
               <Image
                 src={"/search-icon.svg"}
+                alt="search-icon"
                 width={10}
                 height={10}
-                className="absolute top-2 right-2"
+                className="absolute top-2 right-2 w-auto h-auto"
               />
             </div>
             <Image
+              alt="notification-icon"
               width={15}
               height={15}
               src={"/notification.svg"}
-              className="cursor-pointer"
+              className="cursor-pointer w-auto h-auto"
             />
             <Image
+              alt="profile-picture"
               width={20}
               height={20}
               src={"/profile-pic.svg"}
-              className="cursor-pointer"
+              className="cursor-pointer w-auto h-auto"
             />
           </div>
         </div>
 
-        <div className="flex flex-wrap  justify-around md:gap-0 gap-3">
+        <div className="flex flex-wrap  justify-around md:gap-y-3 gap-3">
           <DashboardCard
             icon={"/total-revenue.svg"}
             cardName={"total revenues"}
