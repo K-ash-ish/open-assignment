@@ -7,7 +7,14 @@ function NavItem({ icon, name, active }) {
       href={`/${name}`}
       className={`flex gap-3 capitalize ${active && "font-semibold"}`}
     >
-      <Image height={15} width={15} src={icon} className="text-white" /> {name}
+      <Image
+        alt={icon}
+        height={15}
+        width={15}
+        src={icon}
+        className="text-white"
+      />{" "}
+      {name}
     </Link>
   );
 }
