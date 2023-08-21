@@ -5,20 +5,26 @@ import LineChart from "../components/ui/LineChart";
 import PiChart from "../components/ui/PiChart";
 import { useEmployeeData } from "../hooks/useEmployeeData";
 import { calculateEmployeeStats } from "../helper";
+import { getServerSession } from "next-auth/next";
+import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 async function Dashboard() {
   const res = await useEmployeeData();
   const data = await res?.data?.sort((a, b) => a.employee_age - b.employee_age);
-
   const { totalEmployees, totalSalary, highestSalary, averageAge } =
     calculateEmployeeStats(data);
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return redirect("/");
+  }
   return (
     <div className="bg-[#f5f5f5] min-h-screen flex md:flex-row flex-col items-center md:items-start md:px-8 px-0 py-4 ">
       <SideBar />
       <main className="w-4/5 md:ml-10 flex flex-col   gap-6 my-2">
         <div className=" flex flex-col md:flex-row gap-3  md:gap-0 justify-between items-center">
           <h1 className="md:text-xl text-2xl font-bold">Dashboard</h1>
-          <div className="flex  md:w-1/3 w-full justify-between">
+          <div className="flex  md:w-1/3 w-full justify-between items-center">
             <div className="relative">
               <input
                 type="text"
@@ -40,13 +46,15 @@ async function Dashboard() {
               src={"/notification.svg"}
               className="cursor-pointer w-auto h-auto"
             />
-            <Image
-              alt="profile-picture"
-              width={20}
-              height={20}
-              src={"/profile-pic.svg"}
-              className="cursor-pointer w-auto h-auto"
-            />
+            <div className="flex">
+              <Image
+                alt="profile-picture"
+                width={20}
+                height={20}
+                src={session.user.image}
+                className="cursor-pointer w-auto h-auto rounded-2xl"
+              />
+            </div>
           </div>
         </div>
 

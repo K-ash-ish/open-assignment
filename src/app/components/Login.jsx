@@ -1,7 +1,17 @@
 import Image from "next/image";
 import Card from "./ui/Card";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { getProviders } from "next-auth/react";
+import OAuth from "./ui/OAuth";
+import { redirect } from "next/navigation";
+async function Login() {
+  const session = await getServerSession(authOptions);
+  const providers = await getProviders();
+  if (session) {
+    return redirect("/dashboard");
+  }
 
-function Login() {
   return (
     <div className="h-full flex md:flex-row flex-col-reverse">
       <div className="md:w-1/3 w-full md:h-full h-1/3 bg-black text-white flex justify-center items-center capitalize">
@@ -14,16 +24,7 @@ function Login() {
             <p className="text-xs ">Sign in to your account</p>
           </div>
           <div>
-            <button className=" bg-white text-[#858585] text-xs px-2 py-1 rounded-lg flex justify-around items-center">
-              <Image
-                src={"/google.png"}
-                alt="google-log"
-                className="mr-2 w-auto h-auto"
-                width={10}
-                height={10}
-              />
-              Sign in with google
-            </button>
+            <OAuth providers={providers} />
           </div>
           <Card />
         </div>
